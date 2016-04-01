@@ -1,9 +1,11 @@
 # polygons-intersect
-This script finds all points where the polygons intersect each other.
+[![Build status][travis-image]][travis-url]
+
+This script finds all points where the polygons intersect each other. 
 
 ## Install
 ```bash
-npm run install polygons-intersect
+npm install polygons-intersect
 ```
 
 ## Usage
@@ -16,3 +18,6 @@ console.log(polygonsIntersect(poly1, poly2));
 
 ## License
 MIT
+
+[travis-image]: https://travis-ci.org/DudaGod/polygons-intersect.svg?branch=master
+[travis-url]: https://travis-ci.org/DudaGod/polygons-intersect
