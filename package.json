@@ -1,0 +1,30 @@
+{
+  "author": "Dmitriy Dudkevich <dyda06@mail.ru>",
+  "bugs": {
+    "url": "https://github.com/DudaGod/polygons-intersect/issues"
+  },
+  "description": "This script finds all points where the polygons intersect each other.",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "jscs": "2.11.0",
+    "mocha": "2.4.5"
+  },
+  "directories": {},
+  "keywords": [
+    "2d",
+    "polygon",
+    "intersect"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "polygons-intersect",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DudaGod/polygons-intersect"
+  },
+  "scripts": {
+    "test": "mocha test && npm run lint",
+    "lint": "jscs ."
+  },
+  "version": "1.0.1"
+}

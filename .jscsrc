@@ -1,0 +1,90 @@
+{
+    "excludeFiles": [
+        "**/node_modules/**"
+    ],
+    "esnext": true,
+    "disallowImplicitTypeConversion": [
+        "binary",
+        "boolean",
+        "numeric",
+        "string"
+    ],
+    "disallowKeywordsOnNewLine": [
+        "catch",
+        "else"
+    ],
+    "disallowMixedSpacesAndTabs": true,
+    "disallowMultipleSpaces": true,
+    "disallowMultipleLineStrings": true,
+    "disallowMultipleVarDecl": true,
+    "disallowNewlineBeforeBlockStatements": true,
+    "disallowQuotedKeysInObjects": "allButReserved",
+    "disallowSpaceAfterObjectKeys": true,
+    "disallowSpaceAfterPrefixUnaryOperators": [
+        "!",
+        "-"
+    ],
+    "disallowSpaceBeforeBinaryOperators": [
+        ","
+    ],
+    "disallowSpaceBeforeComma": true,
+    "disallowSpaceBeforeSemicolon": true,
+    "disallowSpacesInCallExpression": true,
+    "disallowSpacesInFunctionDeclaration": {
+        "beforeOpeningRoundBrace": true
+    },
+    "disallowSpacesInNamedFunctionExpression": {
+        "beforeOpeningRoundBrace": true
+    },
+    "disallowSpacesInsideParentheses": true,
+    "disallowTabs": true,
+    "disallowTrailingComma": true,
+    "disallowTrailingWhitespace": true,
+    "disallowYodaConditions": true,
+    "maximumLineLength": 100,
+    "requireBlocksOnNewline": true,
+    "requireCapitalizedConstructors": true,
+    "requireCommaBeforeLineBreak": true,
+    "requireCurlyBraces": [
+        "catch",
+        "do",
+        "if",
+        "else",
+        "for",
+        "switch",
+        "try",
+        "while"
+    ],
+    "requireLineFeedAtFileEnd": true,
+    "requireOperatorBeforeLineBreak": true,
+    "requireParenthesesAroundIIFE": true,
+    "requireSemicolons": true,
+    "requireSpaceAfterBinaryOperators": true,
+    "requireSpaceAfterKeywords": true,
+    "requireSpaceBeforeBinaryOperators": true,
+    "requireSpaceBeforeBlockStatements": true,
+    "requireSpaceBeforeKeywords": [
+        "catch",
+        "else"
+    ],
+    "requireSpaceBeforeObjectValues": true,
+    "requireSpaceBetweenArguments": true,
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "requireSpacesInConditionalExpression": {
+        "afterTest": true,
+        "beforeConsequent": true,
+        "afterConsequent": true,
+        "beforeAlternate": true
+    },
+    "requireSpacesInFunctionDeclaration": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "requireSpacesInNamedFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "validateIndentation": 4,
+    "validateParameterSeparator": ", ",
+    "validateQuoteMarks": "'"
+}
