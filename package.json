@@ -5,9 +5,9 @@
   },
   "description": "This script finds all points where the polygons intersect each other.",
   "devDependencies": {
-    "chai": "3.5.0",
-    "jscs": "2.11.0",
-    "mocha": "2.4.5"
+    "chai": "^4.2.0",
+    "jscs": "^3.0.7",
+    "mocha": "^6.0.2"
   },
   "directories": {},
   "keywords": [
