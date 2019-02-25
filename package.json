@@ -1,7 +1,7 @@
 {
-  "author": "Dmitriy Dudkevich <dyda06@mail.ru>",
+  "author": "Sylvain FAUBET (from Dmitriy Dudkevich's original repository : DudaGod)",
   "bugs": {
-    "url": "https://github.com/DudaGod/polygons-intersect/issues"
+    "url": "https://github.com/sylvainfaubet/polygons-intersect/issues"
   },
   "description": "This script finds all points where the polygons intersect each other.",
   "devDependencies": {
@@ -20,11 +20,11 @@
   "name": "polygons-intersect",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DudaGod/polygons-intersect"
+    "url": "https://github.com/sylvainfaubet/polygons-intersect"
   },
   "scripts": {
     "test": "mocha test && npm run lint",
     "lint": "jscs ."
   },
-  "version": "1.0.2"
+  "version": "1.1.0"
 }
