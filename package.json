@@ -1,13 +1,17 @@
 {
-  "author": "Sylvain FAUBET (from Dmitriy Dudkevich's original repository : DudaGod)",
+  "author": "Dmitriy Dudkevich <dyda06@mail.ru>",
   "bugs": {
     "url": "https://github.com/sylvainfaubet/polygons-intersect/issues"
   },
   "description": "This script finds all points where the polygons intersect each other.",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "jscs": "^3.0.7",
-    "mocha": "^6.0.2"
+    "jasmine": "^3.3.1",
+    "jasmine-ts": "^0.3.0",
+    "nyc": "^13.3.0",
+    "rimraf": "^2.6.3",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.13.0",
+    "typescript": "^3.3.3333"
   },
   "directories": {},
   "keywords": [
@@ -23,8 +27,12 @@
     "url": "https://github.com/sylvainfaubet/polygons-intersect"
   },
   "scripts": {
-    "test": "mocha test && npm run lint",
-    "lint": "jscs ."
+    "test": "jasmine-ts --config=jasmine.json",
+    "lint": "tslint -c tslint.json 'src/**.ts'"
   },
-  "version": "1.1.0"
+  "version": "1.1.0",
+  "dependencies": {
+    "@types/jest": "^24.0.9",
+    "jest": "^24.1.0"
+  }
 }
