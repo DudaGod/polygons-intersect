@@ -10,9 +10,8 @@ export class Polygon {
     private edges: Edge[];
     private edgesIndex = 0;
     private direction = direction.forward;
-    private intersectionEnd = false;
 
-    constructor(private points: Point[] = []) {
+    constructor(private points: Point[] = [], private intersectionEnd = false) {
         this.edges = this.points.map((item, i, arr) => {
             return new Edge(item, arr[(i + 1) % arr.length]);
         });
@@ -56,6 +55,9 @@ export class Polygon {
 
     public getPoints(): Point[] {
         return this.points;
+    }
+    public getPath(): object[] {
+        return this.points.map(point => point.getCoords());
     }
 
     public isPointsOnEdgesAndOut(): boolean {

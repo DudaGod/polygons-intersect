@@ -1,4 +1,4 @@
-import { Point } from "../model/point";
+import { Point, pointState } from "../model/point";
 import { Polygon } from "../model/polygon";
 import intersection from "./intersection";
 
@@ -17,18 +17,20 @@ describe("intersection", () => {
                 new Point(110, 50),
                 new Point(70, 10)
             ]);
-            const expectedResult = [
-                new Polygon([
-                    new Point(30, 70),
+            const expectedResult = new Polygon(
+                [
                     new Point(60, 80),
-                    new Point(80, 60),
-                    new Point(50, 40)
-                ])
-            ];
+                    new Point(30, 70),
+                    new Point(50, 40),
+                    new Point(80, 60)
+                ],
+                true
+            );
             const result = intersection(poly1, poly2);
-            expect(result).toEqual(expectedResult);
+            expect(result.length).toBe(1);
+            expect(result[0].getPath()).toEqual(expectedResult.getPath());
         });
-        it("should return array with one new polygon", () => {
+        it("should return array with one new polygon float", () => {
             const poly1 = new Polygon([
                 new Point(40, 100),
                 new Point(80, 60),
@@ -44,18 +46,17 @@ describe("intersection", () => {
                 new Point(40, 30),
                 new Point(40, 10)
             ]);
-            const expectedResult = [
-                new Polygon([
-                    new Point(30, 30),
-                    new Point(18.75, 30),
-                    new Point(20, 20),
-                    new Point(26.67, 10),
-                    new Point(40, 10),
-                    new Point(40, 26.88)
-                ])
-            ];
+            const expectedResult = new Polygon([
+                new Point(30, 30),
+                new Point(18.75, 30),
+                new Point(20, 20),
+                new Point(26.67, 10),
+                new Point(40, 10),
+                new Point(40, 26.88)
+            ]);
             const result = intersection(poly1, poly2);
-            expect(result).toEqual(expectedResult);
+            expect(result.length).toBe(1);
+            expect(result[0].getPath()).toEqual(expectedResult.getPath());
         });
 
         it("should return array with two new polygons", () => {
@@ -75,13 +76,16 @@ describe("intersection", () => {
                 new Point(70, 10)
             ]);
             const expectedResult = [
-                new Polygon([
-                    new Point(60, 80),
-                    new Point(30, 70),
-                    new Point(49.05, 41.43),
-                    new Point(80, 60),
-                    new Point(63.68, 19.47)
-                ]),
+                new Polygon(
+                    [
+                        new Point(60, 80),
+                        new Point(30, 70),
+                        new Point(49.05, 41.43),
+                        new Point(80, 60),
+                        new Point(63.68, 19.47)
+                    ],
+                    true
+                ),
                 new Polygon([
                     new Point(70, 10),
                     new Point(75.71, 15.71),
@@ -89,7 +93,9 @@ describe("intersection", () => {
                 ])
             ];
             const result = intersection(poly1, poly2);
-            expect(result).toEqual(expectedResult);
+            expect(result.length).toBe(2);
+            expect(result[0].getPath()).toEqual(expectedResult[0].getPath());
+            expect(result[1].getPath()).toEqual(expectedResult[1].getPath());
         });
     });
 
@@ -107,7 +113,6 @@ describe("intersection", () => {
                 new Point(40, 10)
             ]);
             const result = intersection(poly1, poly2);
-            expect(result).toBeInstanceOf(Array);
             expect(result).toEqual([]);
         });
 
@@ -124,7 +129,6 @@ describe("intersection", () => {
                 new Point(50, 20)
             ]);
             const result = intersection(poly1, poly2);
-            expect(result).toBeInstanceOf(Array);
             expect(result).toEqual([]);
         });
     });
@@ -144,7 +148,8 @@ describe("intersection", () => {
                 new Point(30, 20)
             ]);
             const result = intersection(poly1, poly2);
-            expect(result).toEqual(poly2);
+            expect(result.length).toBe(1);
+            expect(result[0].getPath()).toEqual(poly2.getPath());
         });
     });
 
@@ -163,7 +168,6 @@ describe("intersection", () => {
                 new Point(40, 10)
             ]);
             const result = intersection(poly1, poly2);
-            expect(result).toBeInstanceOf(Array);
             expect(result).toEqual([]);
         });
     });
