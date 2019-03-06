@@ -20,7 +20,8 @@
     "intersect"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "name": "polygons-intersect",
   "repository": {
     "type": "git",
