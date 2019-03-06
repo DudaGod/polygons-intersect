@@ -76,17 +76,14 @@ describe("intersection", () => {
                 new Point(70, 10)
             ]);
             const expectedResult = [
-                new Polygon(
-                    [
-                        new Point(60, 80),
-                        new Point(30, 70),
-                        new Point(49.05, 41.43),
-                        new Point(80, 60),
-                        new Point(63.68, 19.47)
-                    ],
-                    true
-                ),
                 new Polygon([
+                    new Point(60, 80),
+                    new Point(30, 70),
+                    new Point(49.05, 41.43),
+                    new Point(80, 60)
+                ]),
+                new Polygon([
+                    new Point(63.68, 19.47),
                     new Point(70, 10),
                     new Point(75.71, 15.71),
                     new Point(63.69, 19.47)

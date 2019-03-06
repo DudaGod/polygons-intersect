@@ -8,27 +8,27 @@ export default function intersection(
     poly2: Polygon
 ): Polygon[] {
     if (poly1.calcPointsInPoly(poly2) === poly1.getPoints().length) {
+        // poly1 est dans poly2
         return [poly1];
     }
     if (poly2.calcPointsInPoly(poly1) === poly2.getPoints().length) {
+        // poly2 est dans poly1
         return [poly2];
     }
 
     const intersectPolies: Polygon[] = [];
 
-    for (const edge of poly1.getEdges()) {
+    poly1.getEdges().forEach(edge => {
         const point = edge.startPoint;
 
-        findPointInPoly(point, poly2, intersectPolies);
+        addPointToPoliesIfInPoly(point, poly2, intersectPolies);
+
         edge.setEdgeIntersections(poly2.getEdges());
 
-        if (edge.getIntersectCount() === 0) {
-            continue;
-        }
-
         const intersect = getFirstIntersectElem(edge, point, intersectPolies);
+
         if (!intersect) {
-            continue;
+            return;
         }
 
         addIntersectPoint(intersect.point, poly2, intersectPolies);
@@ -41,9 +41,9 @@ export default function intersection(
             intersectPolies,
             point
         );
-    }
+    });
 
-    return intersectPolies;
+    return intersectPolies.filter(poly => poly.getPoints().length > 2);
 }
 
 function isNotPointInPolies(point: Point, intersectPolies: Polygon[]) {
@@ -64,7 +64,9 @@ function getFirstIntersectElem(
         );
 
     if (intersections.length === 0) {
-        intersectPolies.slice(-1)[0].endIntersection();
+        if (intersectPolies.length > 0) {
+            intersectPolies.slice(-1)[0].endIntersection();
+        }
         return;
     }
 
@@ -89,16 +91,18 @@ function addIntersectPoint(
     intersectPolies: Polygon[]
 ) {
     if (point.state === pointState.undefined) {
-        poly.isPointInPoly(point); // this line sets point state
+        // mise à jour de l'état du point
+        poly.isPointInPoly(point);
     }
-    if (intersectPolies.length === 0) {
+    if (
+        intersectPolies.length === 0 ||
+        intersectPolies.slice(-1)[0].isIntersectionEnd()
+    ) {
+        // ajout d'un polygone d'intersection
         intersectPolies.push(new Polygon());
     }
-    const intersectPoly = intersectPolies.slice(-1)[0];
-    if (intersectPoly.isIntersectionEnd()) {
-        intersectPolies.push(new Polygon());
-    }
-    intersectPoly.addPoint(point);
+    // ajout du point dans le polygone
+    intersectPolies.slice(-1)[0].addPoint(point);
 }
 
 function findNextIntersectPoint(
@@ -187,7 +191,7 @@ function findNextIntersectPoint(
 
         point = nextEdge.startPoint;
 
-        findPointInPoly(point, poly, intersectPolies);
+        addPointToPoliesIfInPoly(point, poly, intersectPolies);
         nextEdge.setEdgeIntersections(poly.getEdges());
 
         if (!nextEdge.getIntersectCount()) {
@@ -227,8 +231,8 @@ function setEdgeIntersections(edge: Edge, edges: Edge[]) {
         }
     });
 }
-
-function findPointInPoly(
+// ajoute le point si dans le polygone
+function addPointToPoliesIfInPoly(
     point: Point,
     poly: Polygon,
     intersectPolies: Polygon[]

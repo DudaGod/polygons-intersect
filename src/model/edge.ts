@@ -136,6 +136,9 @@ export class Edge {
     }
 
     public setEdgeIntersections(edges: Edge[]) {
+        if (this.intersectElements.length > 0) {
+            return;
+        }
         let intersectPoint;
         edges.forEach(intersectEdge => {
             intersectPoint = this.findIntersectingPoint(intersectEdge);
